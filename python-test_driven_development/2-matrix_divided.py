@@ -45,3 +45,4 @@ def matrix_divided(matrix, div):
                 new_row += [round(i / div, 2)]
             new_matrix += [new_row]
         return new_matrix
+
