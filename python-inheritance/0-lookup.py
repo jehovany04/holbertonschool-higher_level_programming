@@ -1,7 +1,15 @@
 #!/usr/bin/python3
-""" lookup """
+"""A module for lookup function."""
 
 
 def lookup(obj):
-    """ lookup """
-    return [v for v in dir(obj)]
+    """
+    Description:
+        A function that returns the list
+        of available attributes and methods of an object.
+
+    Args: The object to be checked.
+
+    Returns: A list
+    """
+    return dir(obj)
