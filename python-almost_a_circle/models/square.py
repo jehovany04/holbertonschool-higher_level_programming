@@ -11,37 +11,14 @@ class Square(Rectangle):
 
         super().__init__(size, size, x, y, id)  # Call the constructor of the Rectangle class
 
-    @property
-    def size(self):
-        """Getter method for size"""
-        return self.width
+    # ... (rest of the code)
 
-    @size.setter
-    def size(self, value):
-        """Setter method for size"""
-        self.width = value
-        self.height = value
-
-    def update(self, *args, **kwargs):
-        """Assigns arguments to attributes"""
-
-        if len(args) > 0:
-            self.id = args[0]
-        elif kwargs.get('id') is not None:
-            self.id = kwargs['id']
-
-        if len(args) > 1:
-            self.size = args[1]
-        elif kwargs.get('size') is not None:
-            self.size = kwargs['size']
-
-        if len(args) > 2:
-            self.x = args[2]
-        elif kwargs.get('x') is not None:
-            self.x = kwargs['x']
-
-        if len(args) > 3:
-            self.y = args[3]
-        elif kwargs.get('y') is not None:
-            self.y = kwargs['y']
+    def to_dictionary(self):
+        """Returns the dictionary representation of a Square"""
+        return {
+            'id': self.id,
+            'size': self.width,  # Since width and height are the same in a Square
+            'x': self.x,
+            'y': self.y
+        }
 
