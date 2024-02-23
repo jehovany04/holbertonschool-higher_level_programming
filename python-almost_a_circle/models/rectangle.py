@@ -22,5 +22,23 @@ class Rectangle(Base):
 
     @width.setter
     def width(self, value):
-        """
+        """Setter method for width"""
+        self.validate_positive_integer("width", value)
+        self.__width = value
+
+    @property
+    def height(self):
+        """Getter method for height"""
+        return self.__height
+
+    @height.setter
+    def height(self, value):
+        """Setter method for height"""
+        self.validate_positive_integer("height", value)
+        self.__height = value
+
+    @property
+    def x(self):
+        """Getter method for x"""
+        return self.__x
 
