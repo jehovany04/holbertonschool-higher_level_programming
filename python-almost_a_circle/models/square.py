@@ -9,7 +9,7 @@ class Square(Rectangle):
     def __init__(self, size, x=0, y=0, id=None):
         """Initializes a Square instance"""
 
-        super().__init__(size, size, x, y, id)
+        super().__init__(size, size, x, y, id)  # Call the constructor of the Rectangle class
 
     @property
     def size(self):
@@ -19,7 +19,6 @@ class Square(Rectangle):
     @size.setter
     def size(self, value):
         """Setter method for size"""
-        self.validate_positive_integer("size", value)
         self.width = value
         self.height = value
 
@@ -45,9 +44,4 @@ class Square(Rectangle):
             self.y = args[3]
         elif kwargs.get('y') is not None:
             self.y = kwargs['y']
-
-    def __str__(self):
-        """Returns a string representation of the Square instance"""
-        return "[Square] ({}) {}/{} - {}".format(
-            self.id, self.x, self.y, self.width)
 
