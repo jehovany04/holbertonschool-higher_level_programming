@@ -55,5 +55,65 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, value):
-        """Sett
+        """Setter method for y"""
+        self.validate_non_negative_integer("y", value)
+        self.__y = value
+
+    def validate_positive_integer(self, name, value):
+        """Validate that value is a positive integer"""
+        if not isinstance(value, int):
+            raise TypeError("{} must be an integer".format(name))
+        elif value <= 0:
+            raise ValueError("{} must be > 0".format(name))
+
+    def validate_non_negative_integer(self, name, value):
+        """Validate that value is a non-negative integer"""
+        if not isinstance(value, int):
+            raise TypeError("{} must be an integer".format(name))
+        elif value < 0:
+            raise ValueError("{} must be >= 0".format(name))
+
+    def area(self):
+        """Returns the area value of the Rectangle instance"""
+        return self.__width * self.__height
+
+    def display(self):
+        """Prints the Rectangle instance with the character #"""
+        for _ in range(self.__y):
+            print()
+        for _ in range(self.__height):
+            print(" " * self.__x + "#" * self.__width)
+
+    def __str__(self):
+        """Returns a string representation of the Rectangle instance"""
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+            self.id, self.__x, self.__y, self.__width, self.__height)
+
+    def update(self, *args, **kwargs):
+        """Assigns arguments to attributes"""
+
+        if len(args) > 0:
+            self.id = args[0]
+        elif kwargs.get('id') is not None:
+            self.id = kwargs['id']
+
+        if len(args) > 1:
+            self.width = args[1]
+        elif kwargs.get('width') is not None:
+            self.width = kwargs['width']
+
+        if len(args) > 2:
+            self.height = args[2]
+        elif kwargs.get('height') is not None:
+            self.height = kwargs['height']
+
+        if len(args) > 3:
+            self.x = args[3]
+        elif kwargs.get('x') is not None:
+            self.x = kwargs['x']
+
+        if len(args) > 4:
+            self.y = args[4]
+        elif kwargs.get('y') is not None:
+            self.y = kwargs['y']
 
