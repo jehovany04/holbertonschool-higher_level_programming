@@ -1,16 +1,22 @@
 #!/usr/bin/python3
-"""SQL Injection..."""
-
-import sys
+"""Task: List all states that match the argument safely"""
 import MySQLdb
+import sys
 
-if __name__ == '__main__':
-    db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2],
-                         db=sys.argv[3], port=3306)
-    cur = db.cursor()
-    cur.execute("SELECT cities.id, cities.name, states.name \
-        FROM cities JOIN states ON cities.state_id = states.id;")
-    states = cur.fetchall()
+if __name__ == "__main__":
+    connect = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=sys.argv[1],
+        passwd=sys.argv[2],
+        db=sys.argv[3])
+    cur = connect.cursor()
+    cur.execute("SELECT cities.id, cities.name, states.name\
+                FROM cities\
+                JOIN states \
+                    ON cities.state_id = states.id\
+                ORDER by cities.id ASC")
+    qrows = cur.fetchall()
 
-    for state in states:
-        print(state)
+    for row in qrows:
+        print(row)
